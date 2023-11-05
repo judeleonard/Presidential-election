@@ -1,6 +1,5 @@
 create_twitter_fact = ("""
-    DROP TABLE IF EXISTS twitter_fact;
-    CREATE TABLE twitter_fact(
+    CREATE TABLE IF NOT EXISTS twitter_fact(
 	tweet_id BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY, 
 	datetime TIMESTAMP WITH TIMEZONE NOT NULL, 
 	location VARCHAR(255) NULL, 
@@ -14,8 +13,7 @@ create_twitter_fact = ("""
 
 
 create_twitter_dim = ("""
-    DROP TABLE IF EXISTS twitter_dim;
-    CREATE TABLE twitter_dim(
+    CREATE TABLE IF NOT EXISTS twitter_dim(
 	tweet_id BIGINT NOT NULL, 
 	text text NOT NULL, 
 	sentiment_score VARCHAR(255) NOT NULL 	
